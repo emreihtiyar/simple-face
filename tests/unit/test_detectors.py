@@ -10,7 +10,7 @@ import simple_face
 
 imgs_folder = "tests/data"
 
-detector_name_list = ["mediapipe", "ssd"]
+detector_name_list = ["mediapipe", "ssd", "retinaface"]
 one_face_img_list = [os.path.join(imgs_folder,x) for x in ["single1.jpg", "single2.jpg", "single3.jpg", "single5.jpg", "single6.jpg", "single7.jpg", "single8.jpg", "single9.jpg", "single10.jpg"]]
 two_face_img_list = [os.path.join(imgs_folder,x) for x in ["couple.jpg", "couple2.jpg"]]
 #Test from detector name

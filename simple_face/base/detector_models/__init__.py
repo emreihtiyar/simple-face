@@ -1,7 +1,10 @@
 from typing import Union
 from .abstracts import BaseDetector
-from .wrappers.mediapipe import MediapipeDetector
-from .wrappers.ssd import Ssd300x300Detector
+from .wrappers import (
+    MediapipeDetector,
+    Ssd300x300Detector,
+    RetinafaceDetector
+)
 
 
 class DetectorFactory:
@@ -9,6 +12,7 @@ class DetectorFactory:
         "mediapipe": MediapipeDetector,
         "ssd": Ssd300x300Detector,
         "ssd300x300": Ssd300x300Detector,
+        "retinaface": RetinafaceDetector,
     }
     @staticmethod
     def get_detector_class(detector_name: str):
