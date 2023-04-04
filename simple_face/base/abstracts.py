@@ -6,6 +6,7 @@ from simple_face.commons.downloader import download_single_file
 
 class BaseModel(metaclass=abc.ABCMeta):
     WEIGHTS_NAME = None
+    WEIGHTS_PATH = None
     WEIGHTS_URL = None
     _model = None
     _instance = None
@@ -15,8 +16,8 @@ class BaseModel(metaclass=abc.ABCMeta):
         return cls._instance
     @classmethod
     def _check_weight(cls)->bool:
-        if cls.WEIGHTS_NAME is None or cls.WEIGHTS_URL is None:
+        if cls.WEIGHTS_PATH is None or cls.WEIGHTS_URL is None:
             assert False, "You must define WEIGHTS_NAME and WEIGHTS_URL"
-        if not os.path.exists(os.path.join(PCfg.WEIGHTS_DIR, cls.WEIGHTS_NAME)):
+        if not os.path.exists(cls.WEIGHTS_PATH):
             return download_single_file(cls.WEIGHTS_NAME, cls.WEIGHTS_URL, PCfg.WEIGHTS_DIR)
         return True

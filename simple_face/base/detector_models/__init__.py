@@ -1,11 +1,14 @@
 from typing import Union
 from .abstracts import BaseDetector
 from .wrappers.mediapipe import MediapipeDetector
+from .wrappers.ssd import Ssd300x300Detector
 
 
 class DetectorFactory:
     __detector_map = {
         "mediapipe": MediapipeDetector,
+        "ssd": Ssd300x300Detector,
+        "ssd300x300": Ssd300x300Detector,
     }
     @staticmethod
     def get_detector_class(detector_name: str):
