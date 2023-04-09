@@ -28,7 +28,7 @@ class RetinafaceDetector(BaseDetector):
             area = f_details.get('facial_area')
             resp.append(
                 DetectResult(
-                    face_image=img[area[1]:area[3], area[0]:area[2]],
+                    image=img[area[1]:area[3], area[0]:area[2]],
                     detector=self,
                     region=(area[0], area[1], area[2] - area[0], area[3] - area[1]),
                     confidence=f_details.get('score'),

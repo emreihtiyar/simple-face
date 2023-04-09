@@ -8,7 +8,6 @@ import abc
 import cv2
 from typing import List, Callable
 import numpy as np
-from simple_face.types import DetectResult
 from simple_face.base.abstracts import BaseModel
 
 
@@ -31,8 +30,10 @@ class BaseVectorizer(BaseModel):
             img = np.expand_dims(img, axis=0)
         return img
     def normalize(self, img:np.ndarray)->np.ndarray:
+        print("normalize")
         return self.__normalize_function(img)
     def preprocess(self, img:np.ndarray)->np.ndarray:
+        print("preprocess")
         return self.__preprocess_function(img)
     @abc.abstractmethod
     def build(self):

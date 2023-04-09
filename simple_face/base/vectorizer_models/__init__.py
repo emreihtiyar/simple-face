@@ -14,7 +14,7 @@ class VectorizerFactory:
     def get_vectorizer_class(vectorizer_name: str):
         vectorizer_name = vectorizer_name.lower()
         if vectorizer_name not in VectorizerFactory.__vectorizer_map:
-            raise ValueError("Detector not found")
+            raise ValueError("Vectorizer not found")
         return VectorizerFactory.__vectorizer_map[vectorizer_name]
     @staticmethod
     def get_vectorizer(vectorizer_name: str) -> 'BaseVectorizer':
@@ -22,7 +22,7 @@ class VectorizerFactory:
     @staticmethod
     def check_vectorizer(vectorizer: Union[str, 'BaseVectorizer']) -> 'BaseVectorizer':
         if not isinstance(vectorizer, (str, BaseVectorizer)):
-            raise ValueError("Detector must be string or simple-face vectorizer instance")
+            raise ValueError("Vectorizer must be the name of the vectorizer or face vectorizer instance")
         if isinstance(vectorizer, str):
             vectorizer = VectorizerFactory.get_vectorizer(vectorizer)
         return vectorizer

@@ -59,7 +59,7 @@ class Ssd300x300Detector(BaseDetector):
                 (x1, y1, x2, y2) = box.astype("int")
                 resp.append(
                     DetectResult(
-                        face_image=base_img[y1:y2, x1:x2],
+                        image=base_img[y1:y2, x1:x2],
                         detector=self,
                         region=(x1, y1, x2-x1, y2-y1),
                         confidence=confidence

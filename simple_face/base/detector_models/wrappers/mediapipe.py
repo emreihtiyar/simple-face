@@ -44,7 +44,7 @@ class MediapipeDetector(BaseDetector):
                     resp.append(DetectResult(
                         confidence=confidence,
                         detector=self,
-                        face_image=img[y : y + h, x : x + w],
+                        image=img[y : y + h, x : x + w],
                         region=(x, y, w, h),
                         right_eye=right_eye,
                         left_eye=left_eye,

@@ -3,6 +3,7 @@ import numpy as np
 from simple_face.commons import PathConfig
 from simple_face.base.vectorizer_models.architectures import inception_resnet
 from simple_face.base.vectorizer_models.abstracts import BaseVectorizer
+from simple_face.types import VectorizeResult
 
 class Facenet512(BaseVectorizer):
     TARGET_SIZE = (160, 160)
@@ -25,8 +26,8 @@ class Facenet512(BaseVectorizer):
             img = self.normalize(img)
         if "keras" in str(type(self._model)):
             # new tf versions show progress bar and it is annoying
-            embedding = self._model.predict(img, verbose=0)[0].tolist()
+            embedding = self._model.predict(img, verbose=0)[0]
         else:
             # SFace and Dlib are not keras models and no verbose arguments
-            embedding = self._model.predict(img)[0].tolist()
+            embedding = self._model.predict(img)[0]
         return np.array(embedding)
