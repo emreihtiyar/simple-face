@@ -1,7 +1,8 @@
 import abc
 import enum
+import cv2
 import numpy as np
-from typing import List, Tuple, Optional, Union
+from typing import Tuple, Optional, Union
 from dataclasses import dataclass
 
 
@@ -22,8 +23,12 @@ class DetectResult(BaseType):
     mouth: Optional[Tuple[int, int]] = None
     left_ear: Optional[Tuple[int, int]] = None
     right_ear: Optional[Tuple[int, int]] = None
-    def resize(self, size: Tuple[int, int]) -> 'DetectResult':
-        raise NotImplementedError
+    def resize(self, new_size: Tuple[int, int]) -> None:
+        #height, width, _ = self.image.shape
+        self.image = cv2.resize(self.image, new_size)
+        #scale_factor_x = new_size[0] / width
+        #scale_factor_y = new_size[1] / height
+        #self.landmarks = [(int(x * scale_factor_x), int(y * scale_factor_y)) for x, y in self.landmarks]
     def rotate(self, angle: int) -> 'DetectResult':
         raise NotImplementedError
     def align(self, size: Tuple[int, int]) -> 'DetectResult':
